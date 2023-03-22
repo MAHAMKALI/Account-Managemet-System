@@ -1,0 +1,5 @@
+package com.iThelp.usermanagement.repositories;
+
+public class CountryRepository {
+
+}

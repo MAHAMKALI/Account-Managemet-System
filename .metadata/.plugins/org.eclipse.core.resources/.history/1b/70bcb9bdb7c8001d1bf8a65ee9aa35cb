@@ -1,0 +1,5 @@
+package com.iThelp.usermanagement.Controller;
+
+public class UserRestController {
+
+}

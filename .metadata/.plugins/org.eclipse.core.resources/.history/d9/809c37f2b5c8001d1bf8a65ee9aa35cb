@@ -1,0 +1,5 @@
+package com.iThelp.usermanagement.utils;
+
+public class EmailUtils {
+
+}

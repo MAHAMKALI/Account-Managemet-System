@@ -1,0 +1,33 @@
+#Server Port
+server:
+  port: 8081
+  
+#Data Base Configuration
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jrtp22
+    username: root
+    password: Kishore199806@
+
+#JPA Configuration
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+#Java mail configuration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: saikishoremahamkali@gmail.com
+    password: Madhavi198102@
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            auth: true
+            connectiontimeout: 5000
+            timeout: 5000
+            writetimeout: 5000

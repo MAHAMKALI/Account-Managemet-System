@@ -1,0 +1,3 @@
+https://www.geeksforgeeks.org/spring-boot-sending-email-via-smtp/
+
+check this link to know how to send mail from spring boot to email

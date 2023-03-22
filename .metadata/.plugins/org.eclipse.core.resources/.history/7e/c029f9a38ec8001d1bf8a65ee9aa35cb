@@ -1,0 +1,82 @@
+package com.iThelp.usermanagement.Services;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.iThelp.usermanagement.dto.LoginForm;
+import com.iThelp.usermanagement.dto.UnlockAccForm;
+import com.iThelp.usermanagement.dto.UserForm;
+import com.iThelp.usermanagement.entities.City;
+import com.iThelp.usermanagement.entities.Country;
+import com.iThelp.usermanagement.entities.User;
+import com.iThelp.usermanagement.repositories.CityRepository;
+import com.iThelp.usermanagement.repositories.CountryRepository;
+import com.iThelp.usermanagement.repositories.StateRepository;
+import com.iThelp.usermanagement.repositories.UserRepository;
+
+public class UserServiceImpl implements UserService{
+	@Autowired
+	private UserRepository userRepo;
+	@Autowired
+	private CountryRepository countryRepo;
+	@Autowired
+	private StateRepository stateRepo;
+	@Autowired
+	private CityRepository cityRepo;
+	@Override
+	public String checkEmail(String email) {
+		User user = userRepo.findByEmail(email);
+		if (user == null) {
+			return "UNIQUE";
+		}
+		return "DUPLICATE";
+	}
+
+	@Override
+	public Map<Long, String> getCountries() {
+		List<Country> countries = countryRepo.findAll(Sort.by("countryName"));
+		Map<Long, String> countryMap = new Map<>();
+		countries.forEach(country -> countryMap.put(country.getCountryId(), country.getCountryName()));
+		return countryMap;
+	}
+
+	@Override
+	public Map<Long, String> getStates(Long countryId) {
+		List<State> states = stateRepo.getAllStatesBasedOnCountryId(countryId);
+		Map<Long, String> stateMap = new Map<>();
+		states.forEach(state -> stateMap.put(state.getStateId(), state.getStateName()));
+		return stateMap;
+	}
+
+	@Override
+	public Map<Long, String> getCities(Long stateId) {
+		List<City> cities = cityRepo.getAllCitiesBasedOnStateId(stateId);
+		Map<Long, String> cityMap = new Map<>();
+		cities.forEach(city -> cityMap.put(city.getCityId(), city.getCityName()));
+		return cityMap;
+	}
+	@Override
+	public String registerUser(UserForm userForm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String unlockAccount(UnlockAccForm unlockAccForm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String login(LoginForm loginForm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String forgotPwd(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

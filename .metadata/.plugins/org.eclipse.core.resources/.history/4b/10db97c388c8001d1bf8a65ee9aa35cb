@@ -1,0 +1,5 @@
+package com.iThelp.usermanagement.entities;
+
+public class City {
+
+}
